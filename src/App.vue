@@ -1,31 +1,54 @@
 <template>
   <div>
-    <nav>
-      <ul>       
-       <li v-for="route in routes"  v-bind:key="routes.id">
-          <router-link :to="route.path ? route.path : '/'">{{route.titulo}}</router-link>
-        </li>
- 
-      </ul>
-    </nav>
-    <router-view></router-view>
+
+    <meu-menu :rotas="routes"/>
+
+    <transition name="pagina">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
-
 <script>
-  import { routes } from './routes';
-  export default {
-    data(){
-      return{
-        routes
-      }
+
+import { routes } from './routes';
+import Menu from './components/shared/menu/Menu.vue';
+
+export default {
+
+  components: {
+    'meu-menu' : Menu
+  },
+  
+  data() {
+
+    return {
+
+      routes : routes.filter(route => route.menu)
     }
-  
   }
-  
+}
 </script>
 
-
 <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  .corpo {
+    font-family: Helvetica, sans-serif;
+    width: 96%;
+    margin: 0 auto;
+  }
+
+ .pagina-enter, .pagina-leave-active {
+
+     opacity: 0;
+ }
+
+ .pagina-enter-active, .pagina-leave-active {
+
+     transition: opacity .4s;
+ }
+
 </style>
