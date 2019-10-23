@@ -1,6 +1,6 @@
-# acervo_cats
+# acervo_vue
 
-> Esse projeto tem o proposito de criar um acervo de gifs divertido, explorando os conceitos basicos do vue.
+> Esse projeto tem o proposito de criar um acervo de imagens, explorando os conceitos basicos do vue.
 
 ## Build Setup
 
